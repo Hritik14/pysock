@@ -31,11 +31,11 @@ class Sock:
        time.sleep(seconds)
 
     @classmethod
-    def listen(self,sock_main, host="0.0.0.0", port=1337):
+    def listen(self,sock_main, host="0.0.0.0", port=1337, max_connections=30):
         serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         serversocket.bind((host, port))
         serversocket.listen()
-        executor = ThreadPoolExecutor(max_workers=10)
+        executor = ThreadPoolExecutor(max_workers=max_connections)
         print(f"Listening on {host}:{port}...")
         while True:
             connection, address = serversocket.accept()

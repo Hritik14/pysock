@@ -10,4 +10,4 @@ def sock_main(sock: Sock):
             sock.output("Error: " + str(e))
 
 if __name__ == "__main__":
-    Sock.listen(sock_main, host="0.0.0.0", port=1337)
+    Sock.listen(sock_main, host="0.0.0.0", port=1337, max_connections=30)
